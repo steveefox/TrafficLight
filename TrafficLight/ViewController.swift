@@ -13,6 +13,7 @@ enum Colors {
     case yellow
     case green
 }
+// не знаю, где правильней разместить enum
 
 class ViewController: UIViewController {
     
@@ -22,7 +23,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton!
     
-    var colorIs: Colors = .red
+    private var colorIs: Colors = .red
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +47,6 @@ class ViewController: UIViewController {
     @IBAction func changeColor(_ sender: UIButton) {
         
          startButton.setTitle("Next", for: .normal)
-        
         
         if colorIs == .red {
             redColorView.alpha = 1
