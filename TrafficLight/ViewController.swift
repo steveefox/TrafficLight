@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton!
     
+    private let trafficLightIsOff: CGFloat = 0.3
+    private let trafficLightIsOn: CGFloat = 1
     private var colorIs: Colors = .red
     
     override func viewDidLoad() {
@@ -32,41 +34,37 @@ class ViewController: UIViewController {
         startButton.setTitle("START", for: .normal)
         
         
-        redColorView.layer.cornerRadius = 50
-        redColorView.alpha = 0.3
+        redColorView.layer.cornerRadius = redColorView.frame.width / 2
+        redColorView.alpha = trafficLightIsOff
         
-        yellowColorView.layer.cornerRadius = 50
-        yellowColorView.alpha = 0.3
+        yellowColorView.layer.cornerRadius = yellowColorView.frame.width / 2
+        yellowColorView.alpha = trafficLightIsOff
         
-        greenColorView.layer.cornerRadius = 50
-        greenColorView.alpha = 0.3
+        greenColorView.layer.cornerRadius = greenColorView.frame.width / 2
+        greenColorView.alpha = trafficLightIsOff
         
     }
 
-
+    
     @IBAction func changeColor(_ sender: UIButton) {
         
-         startButton.setTitle("Next", for: .normal)
+        startButton.setTitle("Next", for: .normal)
         
         if colorIs == .red {
-            redColorView.alpha = 1
-            greenColorView.alpha = 0.3
+            redColorView.alpha = trafficLightIsOn
+            greenColorView.alpha = trafficLightIsOff
             colorIs = .yellow
         } else if colorIs == .yellow {
-            yellowColorView.alpha = 1
-            redColorView.alpha = 0.3
+            yellowColorView.alpha = trafficLightIsOn
+            redColorView.alpha = trafficLightIsOff
             colorIs = .green
         } else if  colorIs == .green {
-            greenColorView.alpha = 1
-            yellowColorView.alpha = 0.3
+            greenColorView.alpha = trafficLightIsOn
+            yellowColorView.alpha = trafficLightIsOff
             colorIs = .red
-        } else {
-            return
         }
         
         
     }
     
-    
 }
-
